@@ -10,12 +10,10 @@ class Auth extends BaseController
     {
         return view('welcome');
     }
-
     public function login()
     {
         return view('auth/login');
     }
-
     public function loginPost()
     {
         $session = session();
@@ -37,7 +35,6 @@ class Auth extends BaseController
             return redirect()->to('/login');
         }
     }
-
     public function register()
     {
         helper('form');
@@ -69,7 +66,6 @@ class Auth extends BaseController
                     'validation' => $this->validator
                 ]);
             }
-
             $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
             $userModel->save([
@@ -77,10 +73,8 @@ class Auth extends BaseController
                 'email'    => $data['email'],
                 'password' => $data['password']
             ]);
-
             return redirect()->to('/login')->with('success', 'Registrasi berhasil, silakan login.');
         }
-
         return view('auth/register');
     }
     public function registerPost()
@@ -96,16 +90,13 @@ class Auth extends BaseController
             session()->setFlashdata('error', $this->validator->listErrors());
             return redirect()->back()->withInput();
         }
-
         $userModel->insert([
             'username' => $this->request->getPost('username'),
             'email'    => $this->request->getPost('email'),
             'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT)
         ]);
-
         return redirect()->to('/login')->with('success', 'Registrasi berhasil! Silakan login.');
     }
-
     public function logout()
     {
         session()->destroy();
