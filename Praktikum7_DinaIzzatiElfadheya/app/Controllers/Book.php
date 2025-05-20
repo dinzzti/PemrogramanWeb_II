@@ -39,30 +39,31 @@ class Book extends BaseController
         $this->checkLogin();
 
         $rules = [
-            'judul' => 'required|string',
-            'penulis' => 'required|string',
-            'penerbit' => 'required|string',
+            'judul'        => 'required|alpha_numeric_space|is_unique[books.judul]',
+            'penulis'      => 'required|alpha_numeric_space',
+            'penerbit'     => 'required|alpha_numeric_space',
             'tahun_terbit' => 'required|integer|greater_than[1800]|less_than[2024]',
         ];
 
         $messages = [
             'judul' => [
-                'required' => 'Judul harus diisi.',
-                'string' => 'Judul harus berupa teks.'
+                'required'            => 'Judul harus diisi.',
+                'alpha_numeric_space' => 'Judul hanya boleh huruf, angka, dan spasi.',
+                'is_unique'           => 'Judul buku sudah terdaftar.'
             ],
             'penulis' => [
-                'required' => 'Penulis harus diisi.',
-                'string' => 'Penulis harus berupa teks.'
+                'required'            => 'Penulis harus diisi.',
+                'alpha_numeric_space' => 'Penulis hanya boleh huruf, angka, dan spasi.'
             ],
             'penerbit' => [
-                'required' => 'Penerbit harus diisi.',
-                'string' => 'Penerbit harus berupa teks.'
+                'required'            => 'Penerbit harus diisi.',
+                'alpha_numeric_space' => 'Penerbit hanya boleh huruf, angka, dan spasi.'
             ],
             'tahun_terbit' => [
-                'required' => 'Tahun terbit harus diisi.',
-                'integer' => 'Tahun terbit harus berupa angka.',
-                'greater_than' => 'Tahun harus lebih dari 1800.',
-                'less_than' => 'Tahun harus kurang dari 2024.',
+                'required'      => 'Tahun terbit harus diisi.',
+                'integer'       => 'Tahun terbit harus berupa angka.',
+                'greater_than'  => 'Tahun harus lebih dari 1800.',
+                'less_than'     => 'Tahun harus kurang dari 2024.',
             ]
         ];
 
@@ -73,9 +74,9 @@ class Book extends BaseController
         }
 
         $this->bookModel->save([
-            'judul' => $this->request->getPost('judul'),
-            'penulis' => $this->request->getPost('penulis'),
-            'penerbit' => $this->request->getPost('penerbit'),
+            'judul'        => $this->request->getPost('judul'),
+            'penulis'      => $this->request->getPost('penulis'),
+            'penerbit'     => $this->request->getPost('penerbit'),
             'tahun_terbit' => $this->request->getPost('tahun_terbit'),
         ]);
 
@@ -94,13 +95,35 @@ class Book extends BaseController
         $this->checkLogin();
 
         $rules = [
-            'judul' => 'required|string',
-            'penulis' => 'required|string',
-            'penerbit' => 'required|string',
+            'judul'        => 'required|alpha_numeric_space|is_unique[books.judul,id,' . $id . ']',
+            'penulis'      => 'required|alpha_numeric_space',
+            'penerbit'     => 'required|alpha_numeric_space',
             'tahun_terbit' => 'required|integer|greater_than[1800]|less_than[2024]',
         ];
 
-        if (!$this->validate($rules)) {
+        $messages = [
+            'judul' => [
+                'required'            => 'Judul harus diisi.',
+                'alpha_numeric_space' => 'Judul hanya boleh huruf, angka, dan spasi.',
+                'is_unique'           => 'Judul buku sudah digunakan.'
+            ],
+            'penulis' => [
+                'required'            => 'Penulis harus diisi.',
+                'alpha_numeric_space' => 'Penulis hanya boleh huruf, angka, dan spasi.'
+            ],
+            'penerbit' => [
+                'required'            => 'Penerbit harus diisi.',
+                'alpha_numeric_space' => 'Penerbit hanya boleh huruf, angka, dan spasi.'
+            ],
+            'tahun_terbit' => [
+                'required'      => 'Tahun terbit harus diisi.',
+                'integer'       => 'Tahun terbit harus berupa angka.',
+                'greater_than'  => 'Tahun harus lebih dari 1800.',
+                'less_than'     => 'Tahun harus kurang dari 2024.',
+            ]
+        ];
+
+        if (!$this->validate($rules, $messages)) {
             return view('books/edit', [
                 'validation' => $this->validator,
                 'book' => $this->bookModel->find($id)
@@ -108,9 +131,9 @@ class Book extends BaseController
         }
 
         $this->bookModel->update($id, [
-            'judul' => $this->request->getPost('judul'),
-            'penulis' => $this->request->getPost('penulis'),
-            'penerbit' => $this->request->getPost('penerbit'),
+            'judul'        => $this->request->getPost('judul'),
+            'penulis'      => $this->request->getPost('penulis'),
+            'penerbit'     => $this->request->getPost('penerbit'),
             'tahun_terbit' => $this->request->getPost('tahun_terbit'),
         ]);
 
