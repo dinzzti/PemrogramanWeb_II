@@ -12,7 +12,7 @@ class BookModel extends Model
     protected $useTimestamps = false;
 
     protected $validationRules = [
-        'judul'        => 'required|alpha_numeric_space',
+        'judul'        => 'required|alpha_numeric_space|is_unique[books.judul]',
         'penulis'      => 'required|alpha_numeric_space',
         'penerbit'     => 'required|alpha_numeric_space',
         'tahun_terbit' => 'required|integer|greater_than[1800]|less_than[2024]',
@@ -22,6 +22,7 @@ class BookModel extends Model
         'judul' => [
             'required'            => 'Judul buku wajib diisi.',
             'alpha_numeric_space' => 'Judul hanya boleh berisi huruf, angka, dan spasi.',
+            'is_unique'           => 'Judul buku sudah terdaftar.',
         ],
         'penulis' => [
             'required'            => 'Nama penulis wajib diisi.',
