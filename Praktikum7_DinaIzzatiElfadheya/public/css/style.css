@@ -1,0 +1,163 @@
+/* ===== Global ===== */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ffe4ec, #f9c5d1, #f48fb1);
+  background-attachment: fixed;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  transition: background 0.5s ease-in-out;
+}
+
+/* ===== Container ===== */
+.container {
+  max-width: 900px;
+  margin: 50px auto;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 20px 40px rgba(255, 105, 180, 0.3);
+  backdrop-filter: blur(5px);
+  transition: all 0.4s ease;
+}
+
+/* ===== Judul ===== */
+h1, h2 {
+  text-align: center;
+  color: #e91e63;
+  background: linear-gradient(90deg, #ec407a, #f06292);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: color 0.3s ease;
+}
+
+/* ===== Form Styling ===== */
+form label {
+  display: block;
+  margin-top: 20px;
+  font-weight: bold;
+  color: #ad1457;
+}
+
+form input, form select, form textarea {
+  width: 100%;
+  padding: 12px 15px;
+  margin-top: 8px;
+  border: 2px solid #f48fb1;
+  border-radius: 10px;
+  background-color: #fff0f5;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+form input:focus, form textarea:focus, form select:focus {
+  border-color: #d81b60;
+  box-shadow: 0 0 10px #f06292;
+  outline: none;
+}
+
+/* ===== Tombol ===== */
+button, .btn {
+  background: linear-gradient(45deg, #f8bbd0, #f48fb1);
+  color: #fff;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 30px;
+  margin-top: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 15px rgba(236, 64, 122, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+button:hover, .btn:hover {
+  background: linear-gradient(45deg, #f48fb1, #f06292);
+  transform: scale(1.05);
+  box-shadow: 0 12px 20px rgba(236, 64, 122, 0.4);
+}
+
+/* ===== Tabel Data ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 40px;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(248, 187, 208, 0.4);
+}
+
+table th, table td {
+  padding: 16px 24px;
+  text-align: left;
+  border-bottom: 1px solid #fce4ec;
+  transition: background 0.3s ease;
+}
+
+table th {
+  background: linear-gradient(to right, #f8bbd0, #f48fb1);
+  color: #880e4f;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+table td {
+  background-color: #fff0f5;
+  color: #5d1049;
+}
+
+table tr:hover td {
+  background-color: #ffe4ec;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+  .container {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  table tr {
+    margin-bottom: 15px;
+  }
+
+  table td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+  }
+
+  table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 45%;
+    padding-left: 15px;
+    font-weight: bold;
+    text-align: left;
+  }
+}
+.btn-kembali {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #ff69b4; /* warna pink cerah */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin-left: 10px;
+        }
+
+        .btn-kembali:hover {
+            background-color: #e0559a; /* warna pink lebih gelap saat hover */
+        }

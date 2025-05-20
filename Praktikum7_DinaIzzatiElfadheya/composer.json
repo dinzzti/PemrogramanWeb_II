@@ -1,0 +1,13 @@
+{
+    "name": "hp/praktikum7_dina-izzati-elfadheya",
+    "description": "Modul7",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "dinzzti",
+            "email": "widyadina55@gmail.com"
+        }
+    ],
+    "require": {}
+}
