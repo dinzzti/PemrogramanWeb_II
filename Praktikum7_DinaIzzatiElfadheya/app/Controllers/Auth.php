@@ -8,7 +8,7 @@ class Auth extends BaseController
 {
     public function welcome()
     {
-        return view('welcome'); // atau 'landing' tergantung nama filenya
+        return view('welcome');
     }
 
     public function login()
@@ -83,8 +83,6 @@ class Auth extends BaseController
 
         return view('auth/register');
     }
-
-    // Tambahan method baru agar bisa dipanggil jika kamu ingin pisahkan proses
     public function registerPost()
     {
         $userModel = new UserModel();
