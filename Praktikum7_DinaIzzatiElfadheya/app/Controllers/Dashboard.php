@@ -8,13 +8,12 @@ class Dashboard extends BaseController
 {
     public function index()
     {
-        // Cek apakah user sudah login
         if (!session()->get('logged_in')) {
             return redirect()->to('/login');
         }
 
         $bookModel = new BookModel();
-        $data['books'] = $bookModel->findAll(); // Ambil semua data buku
+        $data['books'] = $bookModel->findAll();
         return view('dashboard', $data);
     }
 }
